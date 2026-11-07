@@ -5,3 +5,6 @@ data-raw/
 preview/
 .claude/
 *.log
+
+# persoenliche Notizen
+*.txt
