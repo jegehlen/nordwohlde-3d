@@ -1,0 +1,7 @@
+node_modules/
+dist/
+# Rohdaten (ca. 200 MB) werden per "npm run data:download" neu geladen
+data-raw/
+preview/
+.claude/
+*.log

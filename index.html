@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1720" />
+  <title>Nordwohlde 3D</title>
+  <meta name="description" content="Begehbare 3D-Darstellung des Ortskerns von Nordwohlde (Bassum)" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1720'/%3E%3Cpath d='M10 44 L24 30 L32 36 L44 22 L54 32 L54 50 L10 50Z' fill='%234f7a34'/%3E%3Cpath d='M20 50 V38 L28 31 L36 38 V50Z' fill='%23b0553c'/%3E%3Ccircle cx='46' cy='16' r='6' fill='%23f2b33d'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <canvas id="scene" tabindex="0" aria-label="3D-Ansicht von Nordwohlde"></canvas>
+  <div id="labels" aria-hidden="true"></div>
+  <noscript><p style="color:#fff;padding:24px">Für die 3D-Ansicht wird JavaScript benötigt.</p></noscript>
+
+  <!-- Ladebildschirm -->
+  <div id="loader">
+    <div class="loader-card">
+      <h1>Nordwohlde <span>3D</span></h1>
+      <p class="sub">Ortskern · Stadt Bassum · Landkreis Diepholz</p>
+      <div class="bar"><div id="loader-bar"></div></div>
+      <p id="loader-text">Lade Daten …</p>
+    </div>
+  </div>
+
+  <!-- Kopfzeile -->
+  <header id="hud-top">
+    <div class="title">Nordwohlde <span>3D</span></div>
+    <div class="hud-actions">
+      <button id="compass" class="pill round" aria-label="Nach Norden ausrichten" title="Nach Norden ausrichten">
+        <span id="compass-needle"><span class="n">N</span></span>
+      </button>
+      <button id="btn-labels" class="pill" aria-pressed="true" title="Ortsnamen ein-/ausblenden">Namen</button>
+      <button id="btn-places" class="pill" aria-expanded="false">Orte</button>
+      <button id="btn-help" class="pill round" aria-label="Steuerung anzeigen">?</button>
+    </div>
+  </header>
+
+  <!-- Orte-Menü -->
+  <nav id="places" hidden></nav>
+
+  <!-- Hilfe -->
+  <div id="help" hidden>
+    <div class="help-card">
+      <h2>Drohnensteuerung</h2>
+      <div class="help-desktop">
+        <dl>
+          <dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dt><dd>Vor, links, zurück, rechts</dd>
+          <dt><kbd>E</kbd> / <kbd>Q</kbd></dt><dd>Steigen / Sinken</dd>
+          <dt>Maus ziehen</dt><dd>Umschauen</dd>
+          <dt><kbd>Shift</kbd></dt><dd>Schneller fliegen</dd>
+          <dt>Mausrad</dt><dd>Grundgeschwindigkeit ändern</dd>
+          <dt>Kompass</dt><dd>Klick richtet die Ansicht nach Norden aus</dd>
+        </dl>
+      </div>
+      <div class="help-touch">
+        <dl>
+          <dt>Linker Stick</dt><dd>Fliegen</dd>
+          <dt>Rechts wischen</dt><dd>Umschauen</dd>
+          <dt>▲ / ▼</dt><dd>Steigen / Sinken</dd>
+          <dt>Kompass</dt><dd>Antippen richtet nach Norden aus</dd>
+        </dl>
+      </div>
+      <button id="help-close" class="pill primary">Los geht's</button>
+    </div>
+  </div>
+
+  <!-- Touch-Steuerung -->
+  <div id="touch-ui" hidden>
+    <div id="stick"><div id="stick-knob"></div></div>
+    <div id="alt-buttons">
+      <button id="btn-up" aria-label="Steigen">▲</button>
+      <button id="btn-down" aria-label="Sinken">▼</button>
+    </div>
+  </div>
+
+  <!-- Statuszeile -->
+  <div id="hud-bottom">
+    <span id="hud-alt"></span>
+    <span id="hud-speed"></span>
+  </div>
+  <footer id="credits">
+    Geobasisdaten © <a href="https://www.lgln.niedersachsen.de" target="_blank" rel="noopener">LGLN</a> (2026),
+    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> ·
+    © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>-Mitwirkende
+  </footer>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

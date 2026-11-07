@@ -1,0 +1,183 @@
+{
+  "origin": {
+    "epsg": 25832,
+    "e": 482110,
+    "n": 5861791,
+    "h0": 27
+  },
+  "core": {
+    "size": 1500,
+    "terrain": {
+      "file": "terrain-core.bin",
+      "nx": 1501,
+      "ny": 1501,
+      "step": 1,
+      "size": [
+        1500,
+        1500
+      ],
+      "encoding": "uint16 cm, y = v/100 - 100",
+      "min": -4.247499942779541,
+      "max": 20.626750946044922
+    },
+    "ortho": {
+      "grid": 3,
+      "tileSize": 500,
+      "tiles": [
+        {
+          "i": 0,
+          "j": 0,
+          "file": "ortho/core_0_0_{q}.webp"
+        },
+        {
+          "i": 1,
+          "j": 0,
+          "file": "ortho/core_1_0_{q}.webp"
+        },
+        {
+          "i": 2,
+          "j": 0,
+          "file": "ortho/core_2_0_{q}.webp"
+        },
+        {
+          "i": 0,
+          "j": 1,
+          "file": "ortho/core_0_1_{q}.webp"
+        },
+        {
+          "i": 1,
+          "j": 1,
+          "file": "ortho/core_1_1_{q}.webp"
+        },
+        {
+          "i": 2,
+          "j": 1,
+          "file": "ortho/core_2_1_{q}.webp"
+        },
+        {
+          "i": 0,
+          "j": 2,
+          "file": "ortho/core_0_2_{q}.webp"
+        },
+        {
+          "i": 1,
+          "j": 2,
+          "file": "ortho/core_1_2_{q}.webp"
+        },
+        {
+          "i": 2,
+          "j": 2,
+          "file": "ortho/core_2_2_{q}.webp"
+        }
+      ],
+      "qualities": {
+        "hi": 2048,
+        "lo": 1024
+      }
+    },
+    "chm": {
+      "file": "chm-core.png",
+      "encoding": "uint8 dm",
+      "res": 1
+    }
+  },
+  "outer": {
+    "size": 4000,
+    "terrain": {
+      "file": "terrain-outer.bin",
+      "nx": 501,
+      "ny": 501,
+      "step": 8,
+      "size": [
+        4000,
+        4000
+      ],
+      "encoding": "uint16 cm, y = v/100 - 100",
+      "min": -5.943000316619873,
+      "max": 30.09749984741211
+    },
+    "ortho": "ortho/outer.webp"
+  },
+  "buildings": "buildings.json",
+  "vegetation": "vegetation.json",
+  "osm": "osm.json",
+  "pois": [
+    {
+      "key": "dorfladen",
+      "name": "Dorfladen „Dorfmarkt & Landstube“",
+      "x": 169.7,
+      "z": 125.5,
+      "y": 6.06,
+      "osm": "node/10673112834"
+    },
+    {
+      "key": "gasthaus",
+      "name": "Lüdekes Gasthaus „Zum Hombachtal“",
+      "x": 13.2,
+      "z": 57.7,
+      "y": 2.35,
+      "osm": "way/301069386"
+    },
+    {
+      "key": "schule",
+      "name": "Grundschule Nordwohlde",
+      "x": 410.1,
+      "z": 156.4,
+      "y": 13.16,
+      "osm": "way/474603989"
+    },
+    {
+      "key": "feuerwehr",
+      "name": "Freiwillige Feuerwehr Nordwohlde",
+      "x": 345.2,
+      "z": 167.2,
+      "y": 11.05,
+      "osm": "way/474603977"
+    },
+    {
+      "key": "sporthalle",
+      "name": "Sporthalle",
+      "x": 567.7,
+      "z": 123.6,
+      "y": 16.02,
+      "osm": "way/760746265"
+    },
+    {
+      "key": "sportplatz",
+      "name": "Sportplatz TV Einigkeit Nordwohlde",
+      "x": 517.3,
+      "z": -445.5,
+      "y": 15.96,
+      "osm": "way/474573671"
+    },
+    {
+      "key": "kirche",
+      "name": "Nordwohlder Kirche",
+      "x": 82.6,
+      "z": 88,
+      "y": 4.46,
+      "osm": "way/337731474"
+    },
+    {
+      "key": "b51",
+      "name": "Bundesstraße B51",
+      "x": -571.1,
+      "z": 201.9,
+      "y": 16.49
+    }
+  ],
+  "sources": {
+    "lgln": {
+      "text": "Geobasisdaten: LGLN (2026), Lizenz CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "dop": [
+        "2024-09-05T00:00:00"
+      ]
+    },
+    "osm": {
+      "text": "© OpenStreetMap-Mitwirkende, ODbL",
+      "url": "https://www.openstreetmap.org/copyright"
+    }
+  },
+  "built": "2026-11-07T13:47:06.518Z"
+}

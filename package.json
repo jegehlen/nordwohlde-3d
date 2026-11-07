@@ -1,0 +1,26 @@
+{
+  "name": "nordwohlde-3d",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Begehbare 3D-Darstellung des Ortskerns von Nordwohlde (Bassum) im Browser",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "data:download": "node tools/download.mjs",
+    "data:build": "node tools/build-data.mjs",
+    "data:preview": "node tools/preview.mjs"
+  },
+  "dependencies": {
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "earcut": "^3.2.4",
+    "fast-xml-parser": "^5.12.0",
+    "geotiff": "^3.0.5",
+    "proj4": "^2.22.0",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.6"
+  }
+}
