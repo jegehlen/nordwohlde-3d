@@ -7,6 +7,7 @@ import { buildRoads } from './roads.js';
 import { buildVegetation } from './vegetation.js';
 import { buildLandmarks } from './landmarks.js';
 import { buildWater, makeObstacleSampler, PlaceLabels, AdaptiveResolution } from './extras.js';
+import { MiniMap } from './minimap.js';
 
 const BASE = './data/';
 const $ = (id) => document.getElementById(id);
@@ -120,7 +121,7 @@ function setProgress(key, v, text) {
   if (text) loaderText.textContent = text;
 }
 
-let controls, groundAt, meta, labels, water;
+let controls, groundAt, meta, labels, water, minimap;
 const adaptive = new AdaptiveResolution(renderer, QUALITY.pixelRatio, low ? 0.55 : 0.75);
 
 async function init() {
@@ -182,6 +183,11 @@ async function init() {
   const look = new THREE.Vector3(170, groundAt(170, 60) , 60);
   const dir = look.clone().sub(start);
   controls.setPose(start, Math.atan2(-dir.x, -dir.z), Math.atan2(dir.y, Math.hypot(dir.x, dir.z)));
+
+  minimap = new MiniMap({ el: $('minimap'), osm, buildings: buildings.userData.raw, pois: meta.pois, low });
+  let mapOn = true;
+  try { const v = localStorage.getItem('nw3d-map'); if (v) mapOn = v === '1'; } catch {}
+  setMap(mapOn);
 
   buildPlacesMenu();
   renderer.compile(scene, camera);
@@ -273,6 +279,7 @@ function loop() {
   updateShadowFrustum();
   water?.userData.update(timer.getElapsed());
   labels?.update(camera, innerWidth, innerHeight);
+  minimap?.update(camera.position.x, camera.position.z, controls.yaw, controls.agl);
   compassNeedle.style.transform = `rotate(${controls.yaw}rad)`;
   adaptive.update(dt);
   hudTimer += dt;
@@ -291,6 +298,21 @@ $('btn-labels').addEventListener('click', () => {
   labels.setEnabled(on);
   $('btn-labels').setAttribute('aria-pressed', String(on));
   try { localStorage.setItem('nw3d-labels', on ? '1' : '0'); } catch {}
+});
+// Minikarte ein-/ausblenden, Klick auf die Karte vergrößert sie
+function setMap(on) {
+  minimap.setVisible(on);
+  $('btn-map').setAttribute('aria-pressed', String(on));
+}
+$('btn-map').addEventListener('click', () => {
+  if (!minimap) return;
+  const on = $('minimap').hidden;
+  setMap(on);
+  try { localStorage.setItem('nw3d-map', on ? '1' : '0'); } catch {}
+});
+$('minimap').addEventListener('click', () => {
+  $('minimap').classList.toggle('big');
+  minimap.resize();
 });
 // Kompass: Klick dreht die Blickrichtung nach Norden
 $('compass').addEventListener('click', () => {

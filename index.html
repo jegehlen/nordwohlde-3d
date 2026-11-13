@@ -32,10 +32,19 @@
         <span id="compass-needle"><span class="n">N</span></span>
       </button>
       <button id="btn-labels" class="pill" aria-pressed="true" title="Ortsnamen ein-/ausblenden">Namen</button>
+      <button id="btn-map" class="pill" aria-pressed="true" title="Minikarte ein-/ausblenden">Karte</button>
       <button id="btn-places" class="pill" aria-expanded="false">Orte</button>
       <button id="btn-help" class="pill round" aria-label="Steuerung anzeigen">?</button>
     </div>
   </header>
+
+  <!-- Minikarte -->
+  <div id="minimap" hidden title="Klicken zum Vergrößern/Verkleinern">
+    <canvas aria-label="Minikarte mit aktueller Position"></canvas>
+    <div class="mm-cone" aria-hidden="true"></div>
+    <div class="mm-dot" aria-hidden="true"></div>
+    <div class="mm-north" aria-hidden="true">N</div>
+  </div>
 
   <!-- Orte-Menü -->
   <nav id="places" hidden></nav>
